@@ -1,0 +1,598 @@
+
+sql:     file format mach-o-x86-64
+
+
+Disassembly of section .text:
+
+00000001000012b1 <_print_cb>:
+static inline int print_cb(void *, int, char **restrict, char **restrict);
+}
+#endif
+
+static inline int print_cb(void *NotUsed, int argc, char **argv,
+                           char **azColName) {
+   1000012b1:	55                   	push   %rbp
+   1000012b2:	48 89 e5             	mov    %rsp,%rbp
+   1000012b5:	48 83 ec 30          	sub    $0x30,%rsp
+   1000012b9:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+   1000012bd:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+   1000012c0:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+   1000012c4:	48 89 4d d0          	mov    %rcx,-0x30(%rbp)
+  for (int i = 0; i < argc; i++)
+   1000012c8:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+   1000012cf:	eb 72                	jmp    100001343 <_print_cb+0x92>
+    printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+   1000012d1:	8b 45 fc             	mov    -0x4(%rbp),%eax
+   1000012d4:	48 98                	cltq
+   1000012d6:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+   1000012dd:	00 
+   1000012de:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   1000012e2:	48 01 d0             	add    %rdx,%rax
+   1000012e5:	48 8b 00             	mov    (%rax),%rax
+   1000012e8:	48 85 c0             	test   %rax,%rax
+   1000012eb:	74 19                	je     100001306 <_print_cb+0x55>
+   1000012ed:	8b 45 fc             	mov    -0x4(%rbp),%eax
+   1000012f0:	48 98                	cltq
+   1000012f2:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+   1000012f9:	00 
+   1000012fa:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   1000012fe:	48 01 d0             	add    %rdx,%rax
+   100001301:	48 8b 00             	mov    (%rax),%rax
+   100001304:	eb 07                	jmp    10000130d <_print_cb+0x5c>
+   100001306:	48 8d 05 9b 06 00 00 	lea    0x69b(%rip),%rax        # 1000019a8 <_main+0x11c>
+   10000130d:	8b 55 fc             	mov    -0x4(%rbp),%edx
+   100001310:	48 63 d2             	movslq %edx,%rdx
+   100001313:	48 8d 0c d5 00 00 00 	lea    0x0(,%rdx,8),%rcx
+   10000131a:	00 
+   10000131b:	48 8b 55 d0          	mov    -0x30(%rbp),%rdx
+   10000131f:	48 01 ca             	add    %rcx,%rdx
+   100001322:	48 8b 0a             	mov    (%rdx),%rcx
+   100001325:	48 89 c2             	mov    %rax,%rdx
+   100001328:	48 89 ce             	mov    %rcx,%rsi
+   10000132b:	48 8d 05 7b 06 00 00 	lea    0x67b(%rip),%rax        # 1000019ad <_main+0x121>
+   100001332:	48 89 c7             	mov    %rax,%rdi
+   100001335:	b8 00 00 00 00       	mov    $0x0,%eax
+   10000133a:	e8 b1 05 00 00       	call   1000018f0 <_main+0x64>
+  for (int i = 0; i < argc; i++)
+   10000133f:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+   100001343:	8b 45 fc             	mov    -0x4(%rbp),%eax
+   100001346:	3b 45 e4             	cmp    -0x1c(%rbp),%eax
+   100001349:	7c 86                	jl     1000012d1 <_print_cb+0x20>
+
+  printf("\n");
+   10000134b:	bf 0a 00 00 00       	mov    $0xa,%edi
+   100001350:	e8 a1 05 00 00       	call   1000018f6 <_main+0x6a>
+  txt = calloc(1, 64);
+   100001355:	be 40 00 00 00       	mov    $0x40,%esi
+   10000135a:	bf 01 00 00 00       	mov    $0x1,%edi
+   10000135f:	e8 7a 05 00 00       	call   1000018de <_main+0x52>
+   100001364:	48 89 05 0d 0d 00 00 	mov    %rax,0xd0d(%rip)        # 100002078 <_txt>
+  if (txt == NULL) {
+   10000136b:	48 8b 05 06 0d 00 00 	mov    0xd06(%rip),%rax        # 100002078 <_txt>
+   100001372:	48 85 c0             	test   %rax,%rax
+   100001375:	75 2d                	jne    1000013a4 <_print_cb+0xf3>
+    printf("%d - %s\n", __LINE__, __func__);
+   100001377:	48 8d 05 42 0b 00 00 	lea    0xb42(%rip),%rax        # 100001ec0 <___func__.0>
+   10000137e:	48 89 c2             	mov    %rax,%rdx
+   100001381:	be 1c 00 00 00       	mov    $0x1c,%esi
+   100001386:	48 8d 05 29 06 00 00 	lea    0x629(%rip),%rax        # 1000019b6 <_main+0x12a>
+   10000138d:	48 89 c7             	mov    %rax,%rdi
+   100001390:	b8 00 00 00 00       	mov    $0x0,%eax
+   100001395:	e8 56 05 00 00       	call   1000018f0 <_main+0x64>
+    return 1;
+   10000139a:	b8 01 00 00 00       	mov    $0x1,%eax
+   10000139f:	e9 83 00 00 00       	jmp    100001427 <_print_cb+0x176>
+  }
+
+  strncpy(txt, azColName[0], 64);
+   1000013a4:	48 c7 c2 ff ff ff ff 	mov    $0xffffffffffffffff,%rdx
+   1000013ab:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+   1000013af:	48 8b 30             	mov    (%rax),%rsi
+   1000013b2:	48 8b 05 bf 0c 00 00 	mov    0xcbf(%rip),%rax        # 100002078 <_txt>
+   1000013b9:	48 89 d1             	mov    %rdx,%rcx
+   1000013bc:	ba 40 00 00 00       	mov    $0x40,%edx
+   1000013c1:	48 89 c7             	mov    %rax,%rdi
+   1000013c4:	e8 0f 05 00 00       	call   1000018d8 <_main+0x4c>
+
+  char *txt2 = calloc(1, 64);
+   1000013c9:	be 40 00 00 00       	mov    $0x40,%esi
+   1000013ce:	bf 01 00 00 00       	mov    $0x1,%edi
+   1000013d3:	e8 06 05 00 00       	call   1000018de <_main+0x52>
+   1000013d8:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  while ((*txt2++ = *azColName[0]++))
+   1000013dc:	90                   	nop
+   1000013dd:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+   1000013e1:	48 8b 10             	mov    (%rax),%rdx
+   1000013e4:	48 8d 42 01          	lea    0x1(%rdx),%rax
+   1000013e8:	48 8b 4d d0          	mov    -0x30(%rbp),%rcx
+   1000013ec:	48 89 01             	mov    %rax,(%rcx)
+   1000013ef:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+   1000013f3:	48 8d 48 01          	lea    0x1(%rax),%rcx
+   1000013f7:	48 89 4d f0          	mov    %rcx,-0x10(%rbp)
+   1000013fb:	0f b6 12             	movzbl (%rdx),%edx
+   1000013fe:	88 10                	mov    %dl,(%rax)
+   100001400:	0f b6 00             	movzbl (%rax),%eax
+   100001403:	84 c0                	test   %al,%al
+   100001405:	75 d6                	jne    1000013dd <_print_cb+0x12c>
+    ;
+  printf("txt2: %s\n", txt2);
+   100001407:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+   10000140b:	48 89 c6             	mov    %rax,%rsi
+   10000140e:	48 8d 05 aa 05 00 00 	lea    0x5aa(%rip),%rax        # 1000019bf <_main+0x133>
+   100001415:	48 89 c7             	mov    %rax,%rdi
+   100001418:	b8 00 00 00 00       	mov    $0x0,%eax
+   10000141d:	e8 ce 04 00 00       	call   1000018f0 <_main+0x64>
+  /* while ((txt = *azColName++)) { */
+  /*   printf("%s\n", txt); */
+  /*   txt++; */
+  /* } */
+  /* puts("while loop\n"); */
+  return 0;
+   100001422:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+   100001427:	c9                   	leave
+   100001428:	c3                   	ret
+
+0000000100001429 <_main_x>:
+
+void *main_x(void *arg) {
+   100001429:	55                   	push   %rbp
+   10000142a:	48 89 e5             	mov    %rsp,%rbp
+   10000142d:	48 83 ec 40          	sub    $0x40,%rsp
+   100001431:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+  sqlite3 *db = NULL;
+   100001435:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+   10000143c:	00 
+  char *err_msg = 0;
+   10000143d:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+   100001444:	00 
+  int rc = sqlite3_open("sales.db", &db);
+   100001445:	48 8d 45 e8          	lea    -0x18(%rbp),%rax
+   100001449:	48 89 c6             	mov    %rax,%rsi
+   10000144c:	48 8d 05 76 05 00 00 	lea    0x576(%rip),%rax        # 1000019c9 <_main+0x13d>
+   100001453:	48 89 c7             	mov    %rax,%rdi
+   100001456:	e8 bf 04 00 00       	call   10000191a <_main+0x8e>
+   10000145b:	89 45 fc             	mov    %eax,-0x4(%rbp)
+
+  if (rc != SQLITE_OK) {
+   10000145e:	83 7d fc 00          	cmpl   $0x0,-0x4(%rbp)
+   100001462:	74 46                	je     1000014aa <_main_x+0x81>
+    fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
+   100001464:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   100001468:	48 89 c7             	mov    %rax,%rdi
+   10000146b:	e8 98 04 00 00       	call   100001908 <_main+0x7c>
+   100001470:	48 89 c2             	mov    %rax,%rdx
+   100001473:	48 8b 05 96 0b 00 00 	mov    0xb96(%rip),%rax        # 100002010 <___func__.0+0x150>
+   10000147a:	48 8b 00             	mov    (%rax),%rax
+   10000147d:	48 8d 0d 4e 05 00 00 	lea    0x54e(%rip),%rcx        # 1000019d2 <_main+0x146>
+   100001484:	48 89 ce             	mov    %rcx,%rsi
+   100001487:	48 89 c7             	mov    %rax,%rdi
+   10000148a:	b8 00 00 00 00       	mov    $0x0,%eax
+   10000148f:	e8 50 04 00 00       	call   1000018e4 <_main+0x58>
+    sqlite3_close(db);
+   100001494:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   100001498:	48 89 c7             	mov    %rax,%rdi
+   10000149b:	e8 62 04 00 00       	call   100001902 <_main+0x76>
+    return NULL;
+   1000014a0:	b8 00 00 00 00       	mov    $0x0,%eax
+   1000014a5:	e9 9c 03 00 00       	jmp    100001846 <_main_x+0x41d>
+  }
+
+  char *sql =
+   1000014aa:	48 8d 05 3f 05 00 00 	lea    0x53f(%rip),%rax        # 1000019f0 <_main+0x164>
+   1000014b1:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+      "CREATE TABLE Sales("
+      "Id INT PRIMARY KEY NOT NULL,"
+      "Name TEXT NOT NULL,"
+      "Price INT NOT NULL);";
+
+  sqlite3_exec(db, sql, 0, 0, &err_msg);
+   1000014b5:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   1000014b9:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000014bd:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   1000014c1:	49 89 d0             	mov    %rdx,%r8
+   1000014c4:	b9 00 00 00 00       	mov    $0x0,%ecx
+   1000014c9:	ba 00 00 00 00       	mov    $0x0,%edx
+   1000014ce:	48 89 c7             	mov    %rax,%rdi
+   1000014d1:	e8 38 04 00 00       	call   10000190e <_main+0x82>
+
+  sql =
+   1000014d6:	48 8d 05 6b 05 00 00 	lea    0x56b(%rip),%rax        # 100001a48 <_main+0x1bc>
+   1000014dd:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+      "INSERT INTO Sales VALUES(1, 'Alex', 100);"
+      "INSERT INTO Sales VALUES(2, 'Bora', 200);"
+      "INSERT INTO Sales VALUES(3, 'Alex Bora', 300);";
+
+  sqlite3_exec(db, sql, 0, 0, &err_msg);
+   1000014e1:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   1000014e5:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000014e9:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   1000014ed:	49 89 d0             	mov    %rdx,%r8
+   1000014f0:	b9 00 00 00 00       	mov    $0x0,%ecx
+   1000014f5:	ba 00 00 00 00       	mov    $0x0,%edx
+   1000014fa:	48 89 c7             	mov    %rax,%rdi
+   1000014fd:	e8 0c 04 00 00       	call   10000190e <_main+0x82>
+
+  sql = "SELECT * FROM Sales;";
+   100001502:	48 8d 05 c0 05 00 00 	lea    0x5c0(%rip),%rax        # 100001ac9 <_main+0x23d>
+   100001509:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+
+  sqlite3_exec(db, sql, print_cb, 0, &err_msg);
+   10000150d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   100001511:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   100001515:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001519:	49 89 d0             	mov    %rdx,%r8
+   10000151c:	b9 00 00 00 00       	mov    $0x0,%ecx
+   100001521:	48 8d 15 89 fd ff ff 	lea    -0x277(%rip),%rdx        # 1000012b1 <_print_cb>
+   100001528:	48 89 c7             	mov    %rax,%rdi
+   10000152b:	e8 de 03 00 00       	call   10000190e <_main+0x82>
+
+  sql =
+   100001530:	48 8d 05 a9 05 00 00 	lea    0x5a9(%rip),%rax        # 100001ae0 <_main+0x254>
+   100001537:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+      "FIRST_NAME           CHAR(50)    NOT NULL,"
+      "LAST_NAME           CHAR(50)    NOT NULL,"
+      "EMAIL        CHAR(50) UNIQUE,"
+      "SIZE         REAL );";
+
+  sqlite3_exec(db, sql, 0, 0, &err_msg);
+   10000153b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   10000153f:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   100001543:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001547:	49 89 d0             	mov    %rdx,%r8
+   10000154a:	b9 00 00 00 00       	mov    $0x0,%ecx
+   10000154f:	ba 00 00 00 00       	mov    $0x0,%edx
+   100001554:	48 89 c7             	mov    %rax,%rdi
+   100001557:	e8 b2 03 00 00       	call   10000190e <_main+0x82>
+  sql =
+   10000155c:	48 8d 05 3d 06 00 00 	lea    0x63d(%rip),%rax        # 100001ba0 <_main+0x314>
+   100001563:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+      "INSERT INTO CUSTOMERS (ID,FIRST_NAME,LAST_NAME,EMAIL,SIZE) VALUES (1, "
+      "'Alex', 'Bora', '10', 100);";
+
+  sqlite3_exec(db, sql, 0, 0, &err_msg);
+   100001567:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   10000156b:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   10000156f:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001573:	49 89 d0             	mov    %rdx,%r8
+   100001576:	b9 00 00 00 00       	mov    $0x0,%ecx
+   10000157b:	ba 00 00 00 00       	mov    $0x0,%edx
+   100001580:	48 89 c7             	mov    %rax,%rdi
+   100001583:	e8 86 03 00 00       	call   10000190e <_main+0x82>
+
+  sql = "SELECT * FROM CUSTOMERS;";
+   100001588:	48 8d 05 73 06 00 00 	lea    0x673(%rip),%rax        # 100001c02 <_main+0x376>
+   10000158f:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db, sql, print_cb, 0, &err_msg);
+   100001593:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   100001597:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   10000159b:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   10000159f:	49 89 d0             	mov    %rdx,%r8
+   1000015a2:	b9 00 00 00 00       	mov    $0x0,%ecx
+   1000015a7:	48 8d 15 03 fd ff ff 	lea    -0x2fd(%rip),%rdx        # 1000012b1 <_print_cb>
+   1000015ae:	48 89 c7             	mov    %rax,%rdi
+   1000015b1:	e8 58 03 00 00       	call   10000190e <_main+0x82>
+
+  sql = "SELECT * FROM CUSTOMERS WHERE ID = 1;";
+   1000015b6:	48 8d 05 63 06 00 00 	lea    0x663(%rip),%rax        # 100001c20 <_main+0x394>
+   1000015bd:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db, sql, print_cb, 0, &err_msg);
+   1000015c1:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   1000015c5:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000015c9:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   1000015cd:	49 89 d0             	mov    %rdx,%r8
+   1000015d0:	b9 00 00 00 00       	mov    $0x0,%ecx
+   1000015d5:	48 8d 15 d5 fc ff ff 	lea    -0x32b(%rip),%rdx        # 1000012b1 <_print_cb>
+   1000015dc:	48 89 c7             	mov    %rax,%rdi
+   1000015df:	e8 2a 03 00 00       	call   10000190e <_main+0x82>
+
+  sql =
+   1000015e4:	48 8d 05 5d 06 00 00 	lea    0x65d(%rip),%rax        # 100001c48 <_main+0x3bc>
+   1000015eb:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+      "INSERT INTO CUSTOMERS (ID,FIRST_NAME,LAST_NAME,EMAIL,SIZE) VALUES (2, "
+      "'Bogdan', 'Bora','email', 111);";
+
+  sqlite3_exec(db, sql, print_cb, 0, &err_msg);
+   1000015ef:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   1000015f3:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000015f7:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   1000015fb:	49 89 d0             	mov    %rdx,%r8
+   1000015fe:	b9 00 00 00 00       	mov    $0x0,%ecx
+   100001603:	48 8d 15 a7 fc ff ff 	lea    -0x359(%rip),%rdx        # 1000012b1 <_print_cb>
+   10000160a:	48 89 c7             	mov    %rax,%rdi
+   10000160d:	e8 fc 02 00 00       	call   10000190e <_main+0x82>
+
+  sqlite3 *db2 = NULL;
+   100001612:	48 c7 45 d8 00 00 00 	movq   $0x0,-0x28(%rbp)
+   100001619:	00 
+  sqlite3_open("sales2.db", &db2);
+   10000161a:	48 8d 45 d8          	lea    -0x28(%rbp),%rax
+   10000161e:	48 89 c6             	mov    %rax,%rsi
+   100001621:	48 8d 05 86 06 00 00 	lea    0x686(%rip),%rax        # 100001cae <_main+0x422>
+   100001628:	48 89 c7             	mov    %rax,%rdi
+   10000162b:	e8 ea 02 00 00       	call   10000191a <_main+0x8e>
+
+  sql =
+   100001630:	48 8d 05 81 06 00 00 	lea    0x681(%rip),%rax        # 100001cb8 <_main+0x42c>
+   100001637:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+      "CREATE TABLE IF NOT EXISTS SALES_MID_YEAR("
+      "ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+      "CUSTOMER           CHAR(64)    NOT NULL,"
+      "COUNT         REAL );";
+
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   10000163b:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   10000163f:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   100001643:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001647:	49 89 d0             	mov    %rdx,%r8
+   10000164a:	b9 00 00 00 00       	mov    $0x0,%ecx
+   10000164f:	ba 00 00 00 00       	mov    $0x0,%edx
+   100001654:	48 89 c7             	mov    %rax,%rdi
+   100001657:	e8 b2 02 00 00       	call   10000190e <_main+0x82>
+  sql = "INSERT INTO SALES_MID_YEAR (CUSTOMER,COUNT) VALUES ('Alex', 100);";
+   10000165c:	48 8d 05 e5 06 00 00 	lea    0x6e5(%rip),%rax        # 100001d48 <_main+0x4bc>
+   100001663:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   100001667:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   10000166b:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   10000166f:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001673:	49 89 d0             	mov    %rdx,%r8
+   100001676:	b9 00 00 00 00       	mov    $0x0,%ecx
+   10000167b:	ba 00 00 00 00       	mov    $0x0,%edx
+   100001680:	48 89 c7             	mov    %rax,%rdi
+   100001683:	e8 86 02 00 00       	call   10000190e <_main+0x82>
+  printf("result insertion: %s\n", err_msg);
+   100001688:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+   10000168c:	48 89 c6             	mov    %rax,%rsi
+   10000168f:	48 8d 05 f4 06 00 00 	lea    0x6f4(%rip),%rax        # 100001d8a <_main+0x4fe>
+   100001696:	48 89 c7             	mov    %rax,%rdi
+   100001699:	b8 00 00 00 00       	mov    $0x0,%eax
+   10000169e:	e8 4d 02 00 00       	call   1000018f0 <_main+0x64>
+  sql = "INSERT INTO SALES_MID_YEAR (CUSTOMER,COUNT) VALUES ('Bogdan', 100);";
+   1000016a3:	48 8d 05 f6 06 00 00 	lea    0x6f6(%rip),%rax        # 100001da0 <_main+0x514>
+   1000016aa:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   1000016ae:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   1000016b2:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000016b6:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   1000016ba:	49 89 d0             	mov    %rdx,%r8
+   1000016bd:	b9 00 00 00 00       	mov    $0x0,%ecx
+   1000016c2:	ba 00 00 00 00       	mov    $0x0,%edx
+   1000016c7:	48 89 c7             	mov    %rax,%rdi
+   1000016ca:	e8 3f 02 00 00       	call   10000190e <_main+0x82>
+
+  printf("result insertion : %s\n", err_msg);
+   1000016cf:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+   1000016d3:	48 89 c6             	mov    %rax,%rsi
+   1000016d6:	48 8d 05 07 07 00 00 	lea    0x707(%rip),%rax        # 100001de4 <_main+0x558>
+   1000016dd:	48 89 c7             	mov    %rax,%rdi
+   1000016e0:	b8 00 00 00 00       	mov    $0x0,%eax
+   1000016e5:	e8 06 02 00 00       	call   1000018f0 <_main+0x64>
+
+  sql = "INSERT INTO SALES_MID_YEAR (CUSTOMER,COUNT) VALUES ('Bogdan', 100);";
+   1000016ea:	48 8d 05 af 06 00 00 	lea    0x6af(%rip),%rax        # 100001da0 <_main+0x514>
+   1000016f1:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   1000016f5:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   1000016f9:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000016fd:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001701:	49 89 d0             	mov    %rdx,%r8
+   100001704:	b9 00 00 00 00       	mov    $0x0,%ecx
+   100001709:	ba 00 00 00 00       	mov    $0x0,%edx
+   10000170e:	48 89 c7             	mov    %rax,%rdi
+   100001711:	e8 f8 01 00 00       	call   10000190e <_main+0x82>
+
+  sql = "INSERT INTO SALES_MID_YEAR (CUSTOMER,COUNT) VALUES ('Bogdan', 100);";
+   100001716:	48 8d 05 83 06 00 00 	lea    0x683(%rip),%rax        # 100001da0 <_main+0x514>
+   10000171d:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   100001721:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   100001725:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   100001729:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   10000172d:	49 89 d0             	mov    %rdx,%r8
+   100001730:	b9 00 00 00 00       	mov    $0x0,%ecx
+   100001735:	ba 00 00 00 00       	mov    $0x0,%edx
+   10000173a:	48 89 c7             	mov    %rax,%rdi
+   10000173d:	e8 cc 01 00 00       	call   10000190e <_main+0x82>
+
+  sql = "INSERT INTO SALES_MID_YEAR (CUSTOMER,COUNT) VALUES ('Bogdan', 300);";
+   100001742:	48 8d 05 b7 06 00 00 	lea    0x6b7(%rip),%rax        # 100001e00 <_main+0x574>
+   100001749:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   10000174d:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   100001751:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   100001755:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001759:	49 89 d0             	mov    %rdx,%r8
+   10000175c:	b9 00 00 00 00       	mov    $0x0,%ecx
+   100001761:	ba 00 00 00 00       	mov    $0x0,%edx
+   100001766:	48 89 c7             	mov    %rax,%rdi
+   100001769:	e8 a0 01 00 00       	call   10000190e <_main+0x82>
+
+  puts("Total sales mid year:\n");
+   10000176e:	48 8d 05 cf 06 00 00 	lea    0x6cf(%rip),%rax        # 100001e44 <_main+0x5b8>
+   100001775:	48 89 c7             	mov    %rax,%rdi
+   100001778:	e8 7f 01 00 00       	call   1000018fc <_main+0x70>
+  sql = "SELECT SUM(COUNT) FROM SALES_MID_YEAR;";
+   10000177d:	48 8d 05 dc 06 00 00 	lea    0x6dc(%rip),%rax        # 100001e60 <_main+0x5d4>
+   100001784:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db2, sql, print_cb, 0, &err_msg);
+   100001788:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   10000178c:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   100001790:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   100001794:	49 89 d0             	mov    %rdx,%r8
+   100001797:	b9 00 00 00 00       	mov    $0x0,%ecx
+   10000179c:	48 8d 15 0e fb ff ff 	lea    -0x4f2(%rip),%rdx        # 1000012b1 <_print_cb>
+   1000017a3:	48 89 c7             	mov    %rax,%rdi
+   1000017a6:	e8 63 01 00 00       	call   10000190e <_main+0x82>
+
+  // delete all records from SALES_MID_YEAR
+  sql = "DELETE FROM SALES_MID_YEAR;";
+   1000017ab:	48 8d 05 d5 06 00 00 	lea    0x6d5(%rip),%rax        # 100001e87 <_main+0x5fb>
+   1000017b2:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  sqlite3_exec(db2, sql, 0, 0, &err_msg);
+   1000017b6:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   1000017ba:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+   1000017be:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+   1000017c2:	49 89 d0             	mov    %rdx,%r8
+   1000017c5:	b9 00 00 00 00       	mov    $0x0,%ecx
+   1000017ca:	ba 00 00 00 00       	mov    $0x0,%edx
+   1000017cf:	48 89 c7             	mov    %rax,%rdi
+   1000017d2:	e8 37 01 00 00       	call   10000190e <_main+0x82>
+
+  printf("result deletion: %s\n", err_msg);
+   1000017d7:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+   1000017db:	48 89 c6             	mov    %rax,%rsi
+   1000017de:	48 8d 05 be 06 00 00 	lea    0x6be(%rip),%rax        # 100001ea3 <_main+0x617>
+   1000017e5:	48 89 c7             	mov    %rax,%rdi
+   1000017e8:	b8 00 00 00 00       	mov    $0x0,%eax
+   1000017ed:	e8 fe 00 00 00       	call   1000018f0 <_main+0x64>
+  sql = NULL;
+   1000017f2:	48 c7 45 f0 00 00 00 	movq   $0x0,-0x10(%rbp)
+   1000017f9:	00 
+  err_msg = NULL;
+   1000017fa:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+   100001801:	00 
+  sqlite3_free(err_msg);
+   100001802:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+   100001806:	48 89 c7             	mov    %rax,%rdi
+   100001809:	e8 06 01 00 00       	call   100001914 <_main+0x88>
+  sqlite3_free(sql);
+   10000180e:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+   100001812:	48 89 c7             	mov    %rax,%rdi
+   100001815:	e8 fa 00 00 00       	call   100001914 <_main+0x88>
+  free(txt);
+   10000181a:	48 8b 05 57 08 00 00 	mov    0x857(%rip),%rax        # 100002078 <_txt>
+   100001821:	48 89 c7             	mov    %rax,%rdi
+   100001824:	e8 c1 00 00 00       	call   1000018ea <_main+0x5e>
+  sqlite3_close(db2);
+   100001829:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+   10000182d:	48 89 c7             	mov    %rax,%rdi
+   100001830:	e8 cd 00 00 00       	call   100001902 <_main+0x76>
+  sqlite3_close(db);
+   100001835:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+   100001839:	48 89 c7             	mov    %rax,%rdi
+   10000183c:	e8 c1 00 00 00       	call   100001902 <_main+0x76>
+
+  return NULL;
+   100001841:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+   100001846:	c9                   	leave
+   100001847:	c3                   	ret
+
+0000000100001848 <_f1>:
+typedef int (*FINDONE)(void *);
+typedef int (*FINDMANY)(void *);
+
+typedef void *Data;
+
+int f1(void *arg) {
+   100001848:	55                   	push   %rbp
+   100001849:	48 89 e5             	mov    %rsp,%rbp
+   10000184c:	48 83 ec 10          	sub    $0x10,%rsp
+   100001850:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  printf("f1\n");
+   100001854:	48 8d 05 5d 06 00 00 	lea    0x65d(%rip),%rax        # 100001eb8 <_main+0x62c>
+   10000185b:	48 89 c7             	mov    %rax,%rdi
+   10000185e:	e8 99 00 00 00       	call   1000018fc <_main+0x70>
+  return 0;
+   100001863:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+   100001868:	c9                   	leave
+   100001869:	c3                   	ret
+
+000000010000186a <_f2>:
+
+int f2(Data arg) {
+   10000186a:	55                   	push   %rbp
+   10000186b:	48 89 e5             	mov    %rsp,%rbp
+   10000186e:	48 83 ec 10          	sub    $0x10,%rsp
+   100001872:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  printf("f2\n");
+   100001876:	48 8d 05 3e 06 00 00 	lea    0x63e(%rip),%rax        # 100001ebb <_main+0x62f>
+   10000187d:	48 89 c7             	mov    %rax,%rdi
+   100001880:	e8 77 00 00 00       	call   1000018fc <_main+0x70>
+  return 0;
+   100001885:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+   10000188a:	c9                   	leave
+   10000188b:	c3                   	ret
+
+000000010000188c <_main>:
+
+int main(int argc, char *argv[]) {
+   10000188c:	55                   	push   %rbp
+   10000188d:	48 89 e5             	mov    %rsp,%rbp
+   100001890:	48 83 ec 20          	sub    $0x20,%rsp
+   100001894:	89 7d ec             	mov    %edi,-0x14(%rbp)
+   100001897:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  main_x(NULL);
+   10000189b:	bf 00 00 00 00       	mov    $0x0,%edi
+   1000018a0:	e8 84 fb ff ff       	call   100001429 <_main_x>
+  CREATE f = f1;
+   1000018a5:	48 8d 05 9c ff ff ff 	lea    -0x64(%rip),%rax        # 100001848 <_f1>
+   1000018ac:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  f(NULL);
+   1000018b0:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+   1000018b4:	bf 00 00 00 00       	mov    $0x0,%edi
+   1000018b9:	ff d0                	call   *%rax
+  CREATE f3 = f2;
+   1000018bb:	48 8d 05 a8 ff ff ff 	lea    -0x58(%rip),%rax        # 10000186a <_f2>
+   1000018c2:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  f3(NULL);
+   1000018c6:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+   1000018ca:	bf 00 00 00 00       	mov    $0x0,%edi
+   1000018cf:	ff d0                	call   *%rax
+  return 0;
+   1000018d1:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+   1000018d6:	c9                   	leave
+   1000018d7:	c3                   	ret
+
+Disassembly of section __TEXT.__stubs:
+
+00000001000018d8 <__TEXT.__stubs>:
+   1000018d8:	ff 25 3a 07 00 00    	jmp    *0x73a(%rip)        # 100002018 <___func__.0+0x158>
+   1000018de:	ff 25 3c 07 00 00    	jmp    *0x73c(%rip)        # 100002020 <___func__.0+0x160>
+   1000018e4:	ff 25 3e 07 00 00    	jmp    *0x73e(%rip)        # 100002028 <___func__.0+0x168>
+   1000018ea:	ff 25 40 07 00 00    	jmp    *0x740(%rip)        # 100002030 <___func__.0+0x170>
+   1000018f0:	ff 25 42 07 00 00    	jmp    *0x742(%rip)        # 100002038 <___func__.0+0x178>
+   1000018f6:	ff 25 44 07 00 00    	jmp    *0x744(%rip)        # 100002040 <___func__.0+0x180>
+   1000018fc:	ff 25 46 07 00 00    	jmp    *0x746(%rip)        # 100002048 <___func__.0+0x188>
+   100001902:	ff 25 48 07 00 00    	jmp    *0x748(%rip)        # 100002050 <___func__.0+0x190>
+   100001908:	ff 25 4a 07 00 00    	jmp    *0x74a(%rip)        # 100002058 <___func__.0+0x198>
+   10000190e:	ff 25 4c 07 00 00    	jmp    *0x74c(%rip)        # 100002060 <___func__.0+0x1a0>
+   100001914:	ff 25 4e 07 00 00    	jmp    *0x74e(%rip)        # 100002068 <___func__.0+0x1a8>
+   10000191a:	ff 25 50 07 00 00    	jmp    *0x750(%rip)        # 100002070 <___func__.0+0x1b0>
+
+Disassembly of section __TEXT.__stub_helper:
+
+0000000100001920 <__TEXT.__stub_helper>:
+   100001920:	4c 8d 1d e1 06 00 00 	lea    0x6e1(%rip),%r11        # 100002008 <___func__.0+0x148>
+   100001927:	41 53                	push   %r11
+   100001929:	ff 25 d1 06 00 00    	jmp    *0x6d1(%rip)        # 100002000 <___func__.0+0x140>
+   10000192f:	90                   	nop
+   100001930:	68 67 00 00 00       	push   $0x67
+   100001935:	e9 e6 ff ff ff       	jmp    100001920 <_main+0x94>
+   10000193a:	68 7c 00 00 00       	push   $0x7c
+   10000193f:	e9 dc ff ff ff       	jmp    100001920 <_main+0x94>
+   100001944:	68 92 00 00 00       	push   $0x92
+   100001949:	e9 d2 ff ff ff       	jmp    100001920 <_main+0x94>
+   10000194e:	68 a6 00 00 00       	push   $0xa6
+   100001953:	e9 c8 ff ff ff       	jmp    100001920 <_main+0x94>
+   100001958:	68 ba 00 00 00       	push   $0xba
+   10000195d:	e9 be ff ff ff       	jmp    100001920 <_main+0x94>
+   100001962:	68 00 00 00 00       	push   $0x0
+   100001967:	e9 b4 ff ff ff       	jmp    100001920 <_main+0x94>
+   10000196c:	68 15 00 00 00       	push   $0x15
+   100001971:	e9 aa ff ff ff       	jmp    100001920 <_main+0x94>
+   100001976:	68 23 00 00 00       	push   $0x23
+   10000197b:	e9 a0 ff ff ff       	jmp    100001920 <_main+0x94>
+   100001980:	68 32 00 00 00       	push   $0x32
+   100001985:	e9 96 ff ff ff       	jmp    100001920 <_main+0x94>
+   10000198a:	68 3e 00 00 00       	push   $0x3e
+   10000198f:	e9 8c ff ff ff       	jmp    100001920 <_main+0x94>
+   100001994:	68 4c 00 00 00       	push   $0x4c
+   100001999:	e9 82 ff ff ff       	jmp    100001920 <_main+0x94>
+   10000199e:	68 5b 00 00 00       	push   $0x5b
+   1000019a3:	e9 78 ff ff ff       	jmp    100001920 <_main+0x94>
